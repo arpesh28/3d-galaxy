@@ -14,6 +14,9 @@ const canvas = document.querySelector("canvas.webgl");
 // Scene
 const scene = new THREE.Scene();
 
+const textureLoader = new THREE.TextureLoader();
+const particleTexture = textureLoader.load("/textures/particles/1.png");
+
 /**
  * ===>> Start Galaxy
  */
@@ -90,6 +93,7 @@ const generateGalaxy = () => {
   material = new THREE.PointsMaterial({
     size: parameters.size,
     color: "#ffffff",
+    alphaMap: particleTexture,
     sizeAttenuation: true,
     depthWrite: false,
     blending: THREE.AdditiveBlending,
